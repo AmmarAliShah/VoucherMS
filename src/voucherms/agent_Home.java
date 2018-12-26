@@ -27,21 +27,103 @@ public class agent_Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        title = new javax.swing.JLabel();
+        bt_agentLogOut = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        bt_useVoucher = new javax.swing.JButton();
+        bt_createVoucher = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        title.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
+        title.setText("Voucher Management System");
+
+        bt_agentLogOut.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
+        bt_agentLogOut.setText("Log Out!");
+        bt_agentLogOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_agentLogOutActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel2.setText("Welcome back agent!");
+
+        bt_useVoucher.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
+        bt_useVoucher.setText("Use Voucher");
+        bt_useVoucher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_useVoucherActionPerformed(evt);
+            }
+        });
+
+        bt_createVoucher.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
+        bt_createVoucher.setText("Create Voucher");
+        bt_createVoucher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_createVoucherActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(title))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bt_agentLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(132, 132, 132))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(bt_createVoucher, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(bt_useVoucher, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(title)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_createVoucher, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_useVoucher, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(bt_agentLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bt_agentLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_agentLogOutActionPerformed
+        Home frm1 = new Home();
+        frm1.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bt_agentLogOutActionPerformed
+
+    private void bt_useVoucherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_useVoucherActionPerformed
+        // TODO add your handling code here:
+        dVoucher frm2 = new dVoucher();
+        frm2.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bt_useVoucherActionPerformed
+
+    private void bt_createVoucherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_createVoucherActionPerformed
+        // TODO add your handling code here:
+        cVoucher frm3 = new cVoucher();
+        frm3.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bt_createVoucherActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +161,10 @@ public class agent_Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_agentLogOut;
+    private javax.swing.JButton bt_createVoucher;
+    private javax.swing.JButton bt_useVoucher;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }

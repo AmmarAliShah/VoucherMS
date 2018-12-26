@@ -1,20 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package voucherms;
 
-/**
- *
- * @author Ammar Shah
- */
-public class login_Agent extends javax.swing.JFrame {
+import javax.swing.JOptionPane;
+import java.sql.*;
 
-    /**
-     * Creates new form login_Agent
-     */
+public class login_Agent extends javax.swing.JFrame {
+    
+    Connection con = null;
+    ResultSet rs = null;
+    PreparedStatement pat = null; 
+
     public login_Agent() {
+        con = db_Connect.connectDb();
         initComponents();
     }
 
@@ -29,10 +25,10 @@ public class login_Agent extends javax.swing.JFrame {
 
         title = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        userIn = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        passIn = new javax.swing.JPasswordField();
         bt_loginAgent = new javax.swing.JButton();
         bt_loginAgentBack = new javax.swing.JButton();
 
@@ -49,6 +45,11 @@ public class login_Agent extends javax.swing.JFrame {
         jLabel5.setText("Password:");
 
         bt_loginAgent.setText("Log In");
+        bt_loginAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_loginAgentActionPerformed(evt);
+            }
+        });
 
         bt_loginAgentBack.setText("Back");
         bt_loginAgentBack.addActionListener(new java.awt.event.ActionListener() {
@@ -83,8 +84,8 @@ public class login_Agent extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(bt_loginAgentBack))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField1)
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)))
+                        .addComponent(userIn)
+                        .addComponent(passIn, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)))
                 .addGap(143, 143, 143))
         );
         layout.setVerticalGroup(
@@ -96,12 +97,12 @@ public class login_Agent extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(userIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bt_loginAgent)
@@ -118,6 +119,26 @@ public class login_Agent extends javax.swing.JFrame {
         frm1.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_loginAgentBackActionPerformed
+
+    private void bt_loginAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_loginAgentActionPerformed
+        // TODO add your handling code here:
+        String pass = passIn.getText();
+        try {
+            String query ="Select username, password from users where username='"+userIn.getText()+"'";
+            pat = con.prepareStatement(query);
+            rs = pat.executeQuery();
+            if (pass.equals(rs.getString("password"))){
+                agent_Home frm2 = new agent_Home();
+                frm2.setVisible(true);
+                this.setVisible(false);
+            }
+            else {
+            JOptionPane.showMessageDialog(null, "Wrong username or password");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_bt_loginAgentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,8 +181,8 @@ public class login_Agent extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField passIn;
     private javax.swing.JLabel title;
+    private javax.swing.JTextField userIn;
     // End of variables declaration//GEN-END:variables
 }
